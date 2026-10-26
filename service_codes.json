@@ -1,0 +1,328 @@
+{
+  "_readme": [
+    "Service codes for the Codes page. The ECU reports faults as OBD-II codes (13 01 -> 53 01 03 40 = P0340);",
+    "obd_code links each one to the service code the dash shows. obd_code_seen: a real ski sent that code for this",
+    "fault. The others are the standard OBD-II code for the same sensor or circuit, and Kawasaki doesn't always use",
+    "the standard one: with the oil temp sensor unplugged an Ultra LX sent P1112, not P0195.",
+    "dash: what the meter shows in dealer mode. ecu_pins: ECU connector pins to check. fail_safe: what the ECU does",
+    "while the fault is present."
+  ],
+  "model": "Ultra LX (2008)",
+  "source": "Kawasaki Ultra LX Service Manual, Fuel System (DFI) 3-22/3-23 Service Code Table; ECU pins from 3-18 Terminal Names",
+  "codes": [
+    {
+      "code": 11,
+      "dash": "tPS",
+      "name": "Throttle sensor",
+      "fault": "Throttle sensor malfunction, wiring open or short",
+      "causes": [
+        "Throttle sensor connector unplugged or corroded",
+        "Broken/shorted wire between sensor and ECU",
+        "Loss of 5 V sensor supply or sensor ground (shared with other sensors)",
+        "Failed throttle sensor"
+      ],
+      "ecu_pins": [
+        30,
+        9,
+        32
+      ],
+      "fail_safe": "Ignition timing locked to closed-throttle timing; fueling switches to D-J (pressure/RPM) method.",
+      "obd_code": "P0120",
+      "obd_code_seen": false
+    },
+    {
+      "code": 12,
+      "dash": "bOSt",
+      "name": "Inlet air pressure (MAP) sensor",
+      "fault": "Inlet air pressure sensor malfunction, wiring open or short",
+      "causes": [
+        "MAP sensor connector unplugged or corroded",
+        "Vacuum hose off, cracked or blocked",
+        "Broken/shorted signal wire",
+        "Loss of 5 V sensor supply or sensor ground",
+        "Failed MAP sensor"
+      ],
+      "ecu_pins": [
+        23,
+        9,
+        32
+      ],
+      "fail_safe": "Fueling switches to alpha-N (throttle/RPM) method.",
+      "obd_code": "P0105",
+      "obd_code_seen": false
+    },
+    {
+      "code": 13,
+      "dash": "AIrt",
+      "name": "Inlet air temperature sensor",
+      "fault": "Inlet air temperature sensor malfunction, wiring open or short",
+      "causes": [
+        "IAT sensor connector unplugged or corroded",
+        "Broken/shorted wire",
+        "Failed sensor (check resistance vs temperature)"
+      ],
+      "ecu_pins": [
+        28,
+        32
+      ],
+      "fail_safe": "ECU assumes 40 °C inlet air.",
+      "obd_code": "P0110",
+      "obd_code_seen": false
+    },
+    {
+      "code": 14,
+      "dash": "AqUt",
+      "name": "Water temperature sensor",
+      "fault": "Water temperature sensor malfunction, wiring open or short",
+      "causes": [
+        "Water temp sensor connector unplugged or corroded",
+        "Broken/shorted wire",
+        "Failed sensor (check resistance vs temperature)"
+      ],
+      "ecu_pins": [
+        11,
+        32
+      ],
+      "fail_safe": "ECU assumes 70 °C water temperature.",
+      "obd_code": "P0115",
+      "obd_code_seen": false
+    },
+    {
+      "code": 21,
+      "dash": "CrAg",
+      "name": "Crankshaft sensor",
+      "fault": "Crankshaft sensor malfunction, wiring open or short",
+      "causes": [
+        "Crank sensor connector unplugged",
+        "Broken/shorted wire",
+        "Sensor air gap or damaged/dirty pickup",
+        "Failed sensor (check resistance and peak voltage)"
+      ],
+      "ecu_pins": [
+        22,
+        5
+      ],
+      "fail_safe": "None listed (engine will not run without crank signal).",
+      "obd_code": "P0335",
+      "obd_code_seen": false
+    },
+    {
+      "code": 23,
+      "dash": "CAA1",
+      "name": "Camshaft position sensor",
+      "fault": "Camshaft position sensor malfunction, wiring open or short",
+      "causes": [
+        "Cam sensor connector unplugged",
+        "Broken/shorted wire",
+        "Failed sensor",
+        "Cam timing off after engine work"
+      ],
+      "ecu_pins": [
+        7
+      ],
+      "fail_safe": "Continues firing in the same sequence as the last good signal.",
+      "obd_code": "P0340",
+      "obd_code_seen": true
+    },
+    {
+      "code": 31,
+      "dash": "dOS",
+      "name": "Vehicle-down sensor",
+      "fault": "Vehicle-down sensor malfunction, wiring open or short",
+      "causes": [
+        "Sensor connector unplugged",
+        "Sensor mounted incorrectly or ski on its side",
+        "Broken/shorted wire",
+        "Failed sensor"
+      ],
+      "ecu_pins": [
+        26
+      ],
+      "fail_safe": "Limits engine below 3000 rpm by cutting ignition."
+    },
+    {
+      "code": 35,
+      "dash": "IdA",
+      "name": "Immobilizer amplifier",
+      "fault": "Immobilizer amplifier malfunction",
+      "causes": [
+        "Ignition switch (immobilizer amplifier) connector unplugged",
+        "Broken wiring to amplifier",
+        "Failed immobilizer amplifier"
+      ],
+      "ecu_pins": [
+        12,
+        31
+      ],
+      "fail_safe": "None listed."
+    },
+    {
+      "code": 36,
+      "dash": "IdEr",
+      "name": "Key collation error",
+      "fault": "Key collation error",
+      "causes": [
+        "Key not registered to this ECU",
+        "Damaged key transponder",
+        "Interference from another key or metal near the key"
+      ],
+      "ecu_pins": [
+        10
+      ],
+      "fail_safe": "None listed (engine will not start)."
+    },
+    {
+      "code": 45,
+      "dash": "F-P1",
+      "name": "Fuel pump relay (open)",
+      "fault": "Fuel pump relay malfunction, wiring open",
+      "causes": [
+        "Relay box connector unplugged",
+        "Open relay coil or broken control wire",
+        "Blown main fuse"
+      ],
+      "ecu_pins": [
+        49
+      ],
+      "fail_safe": "None listed.",
+      "obd_code": "P0230",
+      "obd_code_seen": false
+    },
+    {
+      "code": 46,
+      "dash": "F-P2",
+      "name": "Fuel pump relay (stuck)",
+      "fault": "Fuel pump relay malfunction, relay is stuck",
+      "causes": [
+        "Relay contacts welded closed",
+        "Control wire shorted to ground"
+      ],
+      "ecu_pins": [
+        49
+      ],
+      "fail_safe": "None listed."
+    },
+    {
+      "code": 51,
+      "dash": "COL1",
+      "name": "Ignition coil #1/#4",
+      "fault": "Ignition coil #1, #4 malfunction, wiring open or short",
+      "causes": [
+        "Coil connector unplugged",
+        "Broken/shorted primary wire",
+        "Failed coil (check primary/secondary resistance)",
+        "Loss of coil 12 V feed"
+      ],
+      "ecu_pins": [
+        43
+      ],
+      "fail_safe": "Injectors #1/#4 shut off (cylinders 1 and 4 get no fuel).",
+      "obd_code": "P0351",
+      "obd_code_seen": false
+    },
+    {
+      "code": 52,
+      "dash": "COL2",
+      "name": "Ignition coil #2/#3",
+      "fault": "Ignition coil #2, #3 malfunction, wiring open or short",
+      "causes": [
+        "Coil connector unplugged",
+        "Broken/shorted primary wire",
+        "Failed coil (check primary/secondary resistance)",
+        "Loss of coil 12 V feed"
+      ],
+      "ecu_pins": [
+        50
+      ],
+      "fail_safe": "Injectors #2/#3 shut off (cylinders 2 and 3 get no fuel).",
+      "obd_code": "P0352",
+      "obd_code_seen": false
+    },
+    {
+      "code": 71,
+      "dash": "HEAt",
+      "name": "Engine overheat",
+      "fault": "Engine overheat",
+      "causes": [
+        "Clogged cooling water inlet or pickup (weeds, sand)",
+        "Running out of water too long",
+        "Blocked cooling passages or bypass",
+        "Water temp sensor reading falsely high"
+      ],
+      "ecu_pins": [
+        11
+      ],
+      "fail_safe": "Limits engine below 3000 rpm by cutting ignition.",
+      "obd_code": "P0217",
+      "obd_code_seen": false
+    },
+    {
+      "code": 72,
+      "dash": "OILP",
+      "name": "Engine oil pressure low",
+      "fault": "Engine oil pressure too low",
+      "causes": [
+        "Low oil level",
+        "Oil pressure switch connector unplugged or wire shorted to ground",
+        "Failed oil pressure switch",
+        "Oil pump / pickup problem"
+      ],
+      "ecu_pins": [
+        3
+      ],
+      "fail_safe": "Limits engine below 3000 rpm by cutting ignition.",
+      "obd_code": "P0524",
+      "obd_code_seen": false
+    },
+    {
+      "code": 73,
+      "dash": "OILt",
+      "name": "Oil temperature sensor",
+      "fault": "Oil temperature sensor malfunction, wiring open or short",
+      "causes": [
+        "Oil temp sensor connector unplugged or corroded",
+        "Broken/shorted wire",
+        "Failed sensor"
+      ],
+      "ecu_pins": [
+        13,
+        32
+      ],
+      "fail_safe": "ECU assumes 60 °C oil and limits engine below 3000 rpm.",
+      "obd_code": "P1112",
+      "obd_code_seen": true
+    },
+    {
+      "code": 75,
+      "dash": "rEL",
+      "name": "Main (ECU) relay / system relay",
+      "fault": "Main (ECU) relay and system relay malfunction, wiring open or relay stuck",
+      "causes": [
+        "Relay box connector unplugged",
+        "Relay stuck or failed",
+        "Broken wire",
+        "Blown main fuse"
+      ],
+      "ecu_pins": [
+        40,
+        36
+      ],
+      "fail_safe": "None listed."
+    },
+    {
+      "code": 76,
+      "dash": "OILH",
+      "name": "Engine oil overheat",
+      "fault": "Engine oil overheat",
+      "causes": [
+        "Cooling problem (see code 71)",
+        "Low oil level",
+        "Oil temp sensor reading falsely high"
+      ],
+      "ecu_pins": [
+        13
+      ],
+      "fail_safe": "Limits engine below 3000 rpm by cutting ignition."
+    }
+  ]
+}
